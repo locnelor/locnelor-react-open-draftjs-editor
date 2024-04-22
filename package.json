@@ -1,0 +1,32 @@
+{
+  "name": "react-open-draftjs-editor",
+  "version": "0.0.0",
+  "description": "基于draftjs开发的富文本编辑器",
+  "main": "dist/index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/locnelor/react-open-draftjs-editor.git"
+  },
+  "keywords": [
+    "draftjs",
+    "editor"
+  ],
+  "author": "locnelor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/locnelor/react-open-draftjs-editor/issues"
+  },
+  "homepage": "https://github.com/locnelor/react-open-draftjs-editor#readme",
+  "devDependencies": {
+    "@types/draft-js": "^0.11.18",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "draft-js": "^0.11.7"
+  }
+}
