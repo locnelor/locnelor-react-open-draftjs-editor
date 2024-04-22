@@ -1,14 +1,11 @@
-import RichEditor from "RichEditor"
+import { RichEditorProvider } from "provider"
 
 const openRichEditor = () => {
 
     return (
-        <div>
+        <RichEditorProvider>
 
-        </div>
+        </RichEditorProvider>
     )
 }
 export default openRichEditor
-export {
-    RichEditor
-}
