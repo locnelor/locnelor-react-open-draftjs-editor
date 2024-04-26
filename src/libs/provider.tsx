@@ -1,9 +1,10 @@
 import Draft from "draft-js";
 import { createContext, useRef, useEffect } from "react"
+import React from "react";
+import * as Immutable from "immutable"
 
-
-const HeaderOneWrapper = ({ children, type, ...props }) => {
-    const ref = useRef(null);
+const HeaderOneWrapper = ({ children, type, ...props }: any) => {
+    const ref = useRef<HTMLHeadingElement>(null);
     useEffect(() => {
         const id = type + "_" + props["data-offset-key"].split("-")[0]
         if (ref.current) ref.current.id = id;
@@ -14,11 +15,8 @@ const HeaderOneWrapper = ({ children, type, ...props }) => {
         </h1>
     )
 }
-
-const {
-    Provider: RichEditorProvider,
-    Consumer: RichEditorConsumer
-} = createContext({
+export const RichEditorDefaultContext = {
+    language: 'zh',
     styleMap: {
         'TAG': {
             marginLeft: "5px",
@@ -49,9 +47,7 @@ const {
             wrapper: <div className="bg-base-200 pl-2 pr-2 border-l-2 border-blue-500" />
         }
     }))
-});
-
-export {
-    RichEditorConsumer,
-    RichEditorProvider
 }
+export const RichEditorContext = createContext(RichEditorDefaultContext);
+export const RichEditorConsumer = RichEditorContext.Consumer
+export const RichEditorProvider = RichEditorContext.Provider

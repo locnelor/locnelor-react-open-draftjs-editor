@@ -1,9 +1,15 @@
-import { Editor, Modifier, EditorState } from "draft-js"
-import { useContext, useRef } from "react";
-import { RichEditorConsumer } from "../provider"
+import { Editor, Modifier, EditorState, ContentBlock } from "draft-js"
+import React, { CSSProperties, useCallback, useContext, useEffect, useRef } from "react";
+import { RichEditorContext } from "../libs/provider";
 
+export type RichEditorProps = {
+    editorState: EditorState,
+    onChange: (editorState: EditorState) => void,
+    readOnly?: boolean
+}
+export type RichEditorType = (props: RichEditorProps) => React.JSX.Element
 
-const RichEditor = ({
+const RichEditor: RichEditorType = ({
     editorState,
     onChange,
     readOnly = false
@@ -11,8 +17,8 @@ const RichEditor = ({
     const {
         styleMap,
         blockRenderMap
-    } = useContext(RichEditorConsumer)
-    const editorRef = useRef(null);
+    } = useContext(RichEditorContext)
+    const editorRef = useRef<Editor>(null);
 
     useEffect(() => {
         if (!editorRef.current) return;
@@ -21,7 +27,7 @@ const RichEditor = ({
         editorRef.current.editor.id = "DraftEditor"
     }, []);
 
-    const onTab = useCallback((e) => {
+    const onTab = useCallback((e: React.KeyboardEvent<{}>) => {
         e.preventDefault();
         const newContentState = Modifier.replaceText(
             editorState.getCurrentContent(),
@@ -34,10 +40,10 @@ const RichEditor = ({
     }, [editorState, onChange]);
 
     const customStyleFn = useCallback((
-        style
+        style: Draft.DraftInlineStyle
     ) => {
         const arr = style.toList().toArray()
-        const result = {};
+        const result: CSSProperties = {};
         for (const value of arr) {
             const [name, type, color] = value.split("-")
             if (name === "color") {
@@ -51,7 +57,7 @@ const RichEditor = ({
         return result;
     }, [])
 
-    const blockRendererFn = useCallback((block) => {
+    const blockRendererFn = useCallback((block: ContentBlock) => {
         const blockType = block.getType();
         if (blockType === "atomic") {
             const entityKey = block.getEntityAt(0)
@@ -92,10 +98,10 @@ const RichEditor = ({
     }, [editorState, readOnly, onChange]);
 
 
-    const blockStyleFn = useCallback((block) => {
+    const blockStyleFn = useCallback((block: ContentBlock) => {
         const metaData = block.getData()
         const textAlign = metaData.get('align');
-        let classes = [];
+        const classes: any = [];
         if (!!textAlign) classes.push(`text-${textAlign}`);
         return classes.join(" ");
     }, []);
