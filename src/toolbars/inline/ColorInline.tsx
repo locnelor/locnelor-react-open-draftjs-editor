@@ -1,10 +1,9 @@
-import { Close } from "@icon-park/react";
-import { PopoverClose, PopoverArrow } from "@radix-ui/react-popover";
 import { styled } from "@stitches/react";
 import { RichUtils } from "draft-js";
 import React, { useCallback, useMemo } from "react"
-import { BaseProps, UiButton, useCurrentColor } from "react-open-rich-editor"
-import UiPopover, { UiPopoverContent, UiPopoverPortal, UiPopoverTrigger } from "react-open-rich-editor/components/UiPopover";
+import { BaseProps, useCurrentColor } from "react-open-rich-editor"
+import { UiButtonGroupItem } from "../../components/UiButton";
+import UiPopover from "../../components/UiPopover";
 const colorList = [
     [
         "none",
@@ -91,7 +90,7 @@ const ColorInline = ({
         const styleName = `color-${type}-#${color}`;
         for (const color of colors) state = RichUtils.toggleInlineStyle(state, color)
 
-        if (!!color) state = RichUtils.toggleInlineStyle(state, styleName);
+        if (!!color && color !== "none") state = RichUtils.toggleInlineStyle(state, styleName);
         onChange(state);
     }, [editorState, onChange])
 
@@ -101,31 +100,22 @@ const ColorInline = ({
     }, [colors])
 
     return (
-        <UiPopover>
-            <UiPopoverTrigger>
-                <UiButton style={{ backgroundColor }}>
-                    {children}
-                </UiButton>
-            </UiPopoverTrigger>
-            <UiPopoverPortal>
-                <UiPopoverContent sideOffset={5}>
-                    {colorList.map((list, key) => (
-                        <ColorContainer key={key}>
-                            {list.map((color) => (
-                                <ColorItem
-                                    key={color}
-                                    style={{ background: `#${color}` }}
-                                    onMouseDown={onMouseDown.bind(null, color)}
-                                />
-                            ))}
-                        </ColorContainer>
+        <UiPopover trigger={(
+            <UiButtonGroupItem value={type} style={{ backgroundColor }}>
+                {children}
+            </UiButtonGroupItem>
+        )}>
+            {colorList.map((list, key) => (
+                <ColorContainer key={key}>
+                    {list.map((color) => (
+                        <ColorItem
+                            key={color}
+                            style={{ background: `#${color}` }}
+                            onMouseDown={onMouseDown.bind(null, color)}
+                        />
                     ))}
-                    <PopoverClose aria-label="Close">
-                        <Close />
-                    </PopoverClose>
-                    <PopoverArrow />
-                </UiPopoverContent>
-            </UiPopoverPortal>
+                </ColorContainer>
+            ))}
         </UiPopover>
     )
 }

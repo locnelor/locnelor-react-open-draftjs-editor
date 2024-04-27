@@ -10,6 +10,7 @@
     "build": "father build",
     "build:watch": "father dev",
     "docs:build": "dumi build",
+    "docs:preview": "dumi preview",
     "prepare": "husky install && dumi setup",
     "doctor": "father doctor",
     "lint": "npm run lint:es && npm run lint:css",
@@ -18,7 +19,7 @@
     "prepublishOnly": "father doctor && npm run build"
   },
   "authors": [
-    "locnelor"
+    "locnelor@icloud.com"
   ],
   "license": "MIT",
   "files": [
@@ -59,7 +60,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@umijs/lint": "^4.0.0",
-    "dumi": "^2.2.13",
+    "dumi": "^2.2.17",
     "eslint": "^8.23.0",
     "father": "^4.1.0",
     "husky": "^8.0.1",
@@ -75,6 +76,9 @@
     "@icon-park/react": "^1.4.2",
     "@radix-ui/colors": "^3.0.0",
     "@radix-ui/react-popover": "^1.0.7",
+    "@radix-ui/react-toggle": "^1.0.3",
+    "@radix-ui/react-toggle-group": "^1.0.4",
+    "@radix-ui/react-toolbar": "^1.0.4",
     "@stitches/react": "^1.2.8",
     "@types/draft-js": "^0.11.18",
     "draft-js": "^0.11.7",

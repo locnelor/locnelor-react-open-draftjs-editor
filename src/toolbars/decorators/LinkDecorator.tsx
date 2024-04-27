@@ -1,7 +1,7 @@
 
 import { styled } from "@stitches/react";
 import React from "react";
-import withDecorator from "react-open-rich-editor/libs/withDecorator";
+import { withDecorator } from "react-open-rich-editor";
 
 const StyledLink = styled("a", {
     color: "#3f51bf",
@@ -18,7 +18,7 @@ const LinkDecorator = withDecorator(({
             href={href}
             {...rest}
             target="_blank"
-            title="link"
+            title={href}
         >
             {children}
         </StyledLink>

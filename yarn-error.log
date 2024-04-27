@@ -1,0 +1,105 @@
+Arguments: 
+  D:\server\node\node.exe D:\npm\node_prefix\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  D:\server\jdks\jdk8\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;D:\server\xshell\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\server\node;D:\npm\node_prefix;D:\npm\node_prefix\bin;D:\server\Git\bin;C:\Program Files (x86)\Wolfram Research\WolframScript\;D:\server\ffmpeg-2021-08-14-git-acd079843b-full_build\bin;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;D:\server\dotnet;D:\server\MinGW\bin;D:\server\platform-tools;D:\server\scala-2.11.0\bin;D:\server\hadoop\bin;D:\server\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\server\python;D:\server\python\Scripts;D:\server\Tencent\微信web开发者工具\dll;D:\item\Strawberry\c\bin;D:\item\Strawberry\perl\site\bin;D:\item\Strawberry\perl\bin;C:\Users\Administrator\.cargo\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;D:\item\bandizip\;D:\item\PyCharm\bin;;D:\item\IntelliJ IDE\bin;;C:\Users\Administrator\.dotnet\tools;D:\item\Rider\bin;;D:\item\CLion2021.3.1\bin;;D:\item\Microsoft VS Code\bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.17.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: D:\code\git\my-project\package\test\package.json: Unexpected token d in JSON at position 355
+      at JSON.parse (<anonymous>)
+      at D:\npm\node_prefix\node_modules\yarn\lib\cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (D:\npm\node_prefix\node_modules\yarn\lib\cli.js:310:30)
+      at D:\npm\node_prefix\node_modules\yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "react-open-rich-editor",
+    "version": "0.0.1",
+    "description": "A react library developed with dumi",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+      "start": "npm run dev",
+      "dev": "dumi dev",
+      "build": "father build",
+      "build:watch": "father dev",
+      "docs:build": "dumi build",
+      "docs:preview: "dumi preview",
+      "prepare": "husky install && dumi setup",
+      "doctor": "father doctor",
+      "lint": "npm run lint:es && npm run lint:css",
+      "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
+      "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+      "prepublishOnly": "father doctor && npm run build"
+    },
+    "authors": [
+      "locnelor@icloud.com"
+    ],
+    "license": "MIT",
+    "files": [
+      "dist"
+    ],
+    "commitlint": {
+      "extends": [
+        "@commitlint/config-conventional"
+      ]
+    },
+    "lint-staged": {
+      "*.{md,json}": [
+        "prettier --write --no-error-on-unmatched-pattern"
+      ],
+      "*.{css,less}": [
+        "stylelint --fix",
+        "prettier --write"
+      ],
+      "*.{js,jsx}": [
+        "eslint --fix",
+        "prettier --write"
+      ],
+      "*.{ts,tsx}": [
+        "eslint --fix",
+        "prettier --parser=typescript --write"
+      ]
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "peerDependencies": {
+      "react": ">=16.9.0",
+      "react-dom": ">=16.9.0"
+    },
+    "devDependencies": {
+      "@commitlint/cli": "^17.1.2",
+      "@commitlint/config-conventional": "^17.1.0",
+      "@types/react": "^18.0.0",
+      "@types/react-dom": "^18.0.0",
+      "@umijs/lint": "^4.0.0",
+      "dumi": "^2.2.17",
+      "eslint": "^8.23.0",
+      "father": "^4.1.0",
+      "husky": "^8.0.1",
+      "lint-staged": "^13.0.3",
+      "prettier": "^2.7.1",
+      "prettier-plugin-organize-imports": "^3.0.0",
+      "prettier-plugin-packagejson": "^2.2.18",
+      "react": "^18.0.0",
+      "react-dom": "^18.0.0",
+      "stylelint": "^14.9.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

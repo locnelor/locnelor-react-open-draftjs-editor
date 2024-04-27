@@ -31,6 +31,9 @@ $ yarn run build:watch
 # build docs
 $ yarn run docs:build
 
+# Locally preview the production build.
+$ yarn run docs:preview
+
 # check your project for potential problems
 $ yarn run doctor
 ```

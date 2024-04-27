@@ -1,6 +1,8 @@
 import * as Popover from "@radix-ui/react-popover";
 import { keyframes, styled } from "@stitches/react";
 import { violet } from '@radix-ui/colors';
+import React from "react";
+import { Close } from "@icon-park/react";
 
 const slideUpAndFade = keyframes({
     '0%': { opacity: 0, transform: 'translateY(2px)' },
@@ -62,7 +64,37 @@ export const UiPopoverClose = styled(Popover.Close, {
     '&:hover': { backgroundColor: violet.violet4 },
     '&:focus': { boxShadow: `0 0 0 2px ${violet.violet7}` },
 });
-export const UiPopoverTrigger = Popover.PopoverTrigger
+export const UiPopoverTrigger = styled(Popover.PopoverTrigger, {
+
+})
 export const UiPopoverPortal = Popover.Portal
-const UiPopover = Popover.Root
+export const UiPopoverRoot = Popover.Root
+export type UiPopoverProps = React.PropsWithChildren<{
+    trigger: React.ReactNode
+}>
+
+
+const UiPopover = ({
+    trigger,
+    children
+}: UiPopoverProps) => {
+
+    return (
+        <UiPopoverRoot>
+            <UiPopoverTrigger asChild>
+                {trigger}
+            </UiPopoverTrigger>
+            <UiPopoverPortal>
+                <UiPopoverContent sideOffset={5}>
+                    {children}
+                    <UiPopoverClose aria-label="Close">
+                        <Close />
+                    </UiPopoverClose>
+                </UiPopoverContent>
+            </UiPopoverPortal>
+        </UiPopoverRoot>
+    )
+}
 export default UiPopover
+
+
