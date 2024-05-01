@@ -1,5 +1,5 @@
 import React from "react"
-import { BaseProps, inlineKeys, blockKeys } from "react-open-rich-editor"
+import { BaseProps, inlineKeys, blockKeys, DividerBlock } from "react-open-rich-editor"
 import WithInline from "./inline/withInline"
 import ColorInline from "./inline/ColorInline"
 import LinkInline from "./inline/LinkInline"
@@ -18,7 +18,11 @@ const toolbars = [
     "line",
     [Color, BgColor, LinkInline],
     "line",
-    [...blockKeys.map(key => withBlock(key))]
+    [...blockKeys.map(key => withBlock(key))],
+    "line",
+    [
+        DividerBlock
+    ]
 ]
 //加粗、倾斜、下划线、删除线、标签√
 //字体颜色、背景颜色√ 标题、链接

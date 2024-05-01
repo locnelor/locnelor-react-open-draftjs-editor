@@ -1,6 +1,7 @@
 import { Editor, Modifier, EditorState, ContentBlock } from "draft-js"
 import React, { CSSProperties, useCallback, useContext, useEffect, useRef } from "react";
 import { RichEditorContext } from "../libs/provider";
+import { AtomicBlockDivider, DividerBlockName } from "react-open-rich-editor";
 
 export type RichEditorProps = {
     editorState: EditorState,
@@ -72,15 +73,15 @@ const RichEditor: RichEditorType = ({
                     editorState,
                     onChange
                 },
-                component: null,
+                component: null as any,
             }
             switch (entityType) {
                 // case ImageBlockName:
                 //     method.component = AtomicBlockImage;
                 //     break;
-                // case DividerBlockName:
-                //     method.component = AtomicBlockDivider;
-                //     break;
+                case DividerBlockName:
+                    method.component = AtomicBlockDivider;
+                    break;
                 // case CodeBlockName:
                 //     method.component = AtomicBlockCode;
                 //     break;
