@@ -1,64 +1,65 @@
-import React from "react"
-import { BaseProps, inlineKeys, blockKeys, DividerBlock } from "react-open-rich-editor"
-import WithInline from "./inline/withInline"
-import ColorInline from "./inline/ColorInline"
-import LinkInline from "./inline/LinkInline"
-import withBlock from "./block/withBlock"
-import UiToolbar, { UiToolbarSeparator } from "../components/UiToolbar"
-import { UiButtonGroup } from "../components/UiButton"
+import { BackgroundColor, Text } from '@icon-park/react';
+import React from 'react';
+import {
+  BaseProps,
+  CodeBlock,
+  DividerBlock,
+  ImageBlock,
+  MathBlock,
+  TableBlock,
+  blockKeys,
+  inlineKeys,
+} from 'react-open-rich-editor';
+import { UiButtonGroup } from '../components/UiButton';
+import UiToolbar, { UiToolbarSeparator } from '../components/UiToolbar';
+import withBlock from './block/withBlock';
+import ColorInline from './inline/ColorInline';
+import LinkInline from './inline/LinkInline';
+import WithInline from './inline/withInline';
 
 const Color = (rest: any) => {
-    return <ColorInline {...rest} type="color" >color</ColorInline>
-}
+  return (
+    <ColorInline {...rest} type="color">
+      <Text />
+    </ColorInline>
+  );
+};
 const BgColor = (rest: any) => {
-    return <ColorInline {...rest} type="background" >bg</ColorInline>
-}
+  return (
+    <ColorInline {...rest} type="background">
+      <BackgroundColor />
+    </ColorInline>
+  );
+};
 const toolbars = [
-    [...inlineKeys.map(key => WithInline(key))],
-    "line",
-    [Color, BgColor, LinkInline],
-    "line",
-    [...blockKeys.map(key => withBlock(key))],
-    "line",
-    [
-        DividerBlock
-    ]
-]
-//加粗、倾斜、下划线、删除线、标签√
-//字体颜色、背景颜色√ 标题、链接
-//左对齐、居中对齐、右对齐
-//代码、分隔线、图片、表格、数学
-const ToolbarDemo = ({
-    editorState,
-    onChange
-}: BaseProps) => {
+  [...inlineKeys.map((key) => WithInline(key))],
+  'line',
+  [Color, BgColor, LinkInline],
+  'line',
+  [...blockKeys.map((key) => withBlock(key))],
+  'line',
+  [DividerBlock, CodeBlock, ImageBlock, MathBlock, TableBlock],
+];
+//代码、图片、表格、数学
+const ToolbarDemo = ({ editorState, onChange }: BaseProps) => {
+  return (
+    <UiToolbar>
+      {toolbars.map((value, key) => {
+        if (typeof value === 'string') return <UiToolbarSeparator key={key} />;
+        return (
+          <UiButtonGroup type="multiple" key={key}>
+            {value.map((Elem, id) => (
+              <Elem
+                key={`${key}_${id}`}
+                editorState={editorState}
+                onChange={onChange}
+              />
+            ))}
+          </UiButtonGroup>
+        );
+      })}
+    </UiToolbar>
+  );
+};
 
-    return (
-        <UiToolbar>
-            {toolbars.map((value, key) => {
-                if (typeof value === "string") return <UiToolbarSeparator key={key} />
-                return (
-                    <UiButtonGroup
-                        type="multiple"
-                        key={key}
-                    >
-                        {value.map((Elem, id) => (
-                            <Elem
-                                key={`${key}_${id}`}
-                                editorState={editorState}
-                                onChange={onChange}
-                            />
-                        ))}
-                    </UiButtonGroup>
-                )
-            })}
-        </UiToolbar>
-    )
-}
-
-
-
-
-
-
-export default ToolbarDemo
+export default ToolbarDemo;

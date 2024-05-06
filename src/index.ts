@@ -30,13 +30,38 @@ export { default as useIcon } from './hooks/useIcon';
 export { inlineKeys, setInline, default as useInline } from './hooks/useInline';
 export { default as useLanguage } from './hooks/useLanguage';
 export { default as withBlock } from './toolbars/block/withBlock';
+export { default as LinkDecorator } from './toolbars/decorators/LinkDecorator';
 export { default as withDecorator } from './toolbars/decorators/withDecorator';
+
+export {
+  AtomicBlockCode,
+  default as CodeBlock,
+  CodeBlockName,
+} from './toolbars/atomic/CodeBlock';
+
+export {
+  AtomicBlockImage,
+  default as ImageBlock,
+  ImageBlockName,
+} from './toolbars/atomic/ImageBlock';
 
 export {
   AtomicBlockDivider,
   default as DividerBlock,
   DividerBlockName,
 } from './toolbars/atomic/DividerBlock';
+
+export {
+  AtomicBlockMath,
+  default as MathBlock,
+  MathBlockName,
+} from './toolbars/atomic/MathBlock';
+
+export {
+  AtomicBlockTable,
+  default as TableBlock,
+  TableBlockName,
+} from './toolbars/atomic/TableBlock';
 
 export type { BlockKeys } from './hooks/useBlock';
 export type { InlineKeys } from './hooks/useInline';
