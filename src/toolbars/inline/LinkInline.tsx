@@ -65,7 +65,7 @@ const LinkInline = ({ editorState, onChange }: BaseProps) => {
   return (
     <UiPopover
       trigger={
-        <UiButtonGroupItem value="link">
+        <UiButtonGroupItem title="添加链接" value="link">
           <Link />
         </UiButtonGroupItem>
       }

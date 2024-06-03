@@ -6,7 +6,14 @@ export default {
     STRIKETHROUGH: '删除线',
     TAG: '标签',
   },
-  block: {},
+  block: {
+    'header-one': '一级标题',
+    'header-two': '二级标题',
+    'header-three': '三级标题',
+    blockquote: '引用',
+    'ordered-list-item': '有序列表',
+    'unordered-list-item': '无序列表',
+  },
   atomic: {
     divider: '分割线',
     code: '代码',

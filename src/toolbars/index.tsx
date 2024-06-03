@@ -19,14 +19,14 @@ import WithInline from './inline/withInline';
 
 const Color = (rest: any) => {
   return (
-    <ColorInline {...rest} type="color">
+    <ColorInline {...rest} type="color" title="字体颜色">
       <Text />
     </ColorInline>
   );
 };
 const BgColor = (rest: any) => {
   return (
-    <ColorInline {...rest} type="background">
+    <ColorInline {...rest} type="background" title="背景颜色">
       <BackgroundColor />
     </ColorInline>
   );
