@@ -21,4 +21,8 @@ export default {
     math: '公式',
     table: '表格',
   },
+  modal: {
+    okText: '确认',
+    cancelText: '取消',
+  },
 };
